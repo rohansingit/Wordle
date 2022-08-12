@@ -1,4 +1,4 @@
-# import modules
+# importing modules
 import random
 import pygame
 import words
