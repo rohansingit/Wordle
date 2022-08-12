@@ -1,5 +1,4 @@
-# CODE YOUR OWN WORDLE IN 60 SECONDS
-# import your modules
+# import modules
 import random
 import pygame
 import words
@@ -22,7 +21,7 @@ board = [[" ", " ", " ", " ", " "],
          [" ", " ", " ", " ", " "],
          [" ", " ", " ", " ", " "],
          [" ", " ", " ", " ", " "]]
-
+# Keep game running at steady 60 fps on all devices
 fps = 60
 timer = pygame.time.Clock()
 huge_font = pygame.font.Font('freesansbold.ttf', 56)
@@ -31,7 +30,7 @@ game_over = False
 letters = 0
 turn_active = True
 
-# create routine for drawing the board
+# function to draw board when game starts
 
 def draw_board():
     global turn
@@ -43,8 +42,7 @@ def draw_board():
             screen.blit(piece_text, (col * 100 + 30, row * 100 + 25))
     pygame.draw.rect(screen, green, [5, turn * 100 + 5, WIDTH - 10, 90], 3, 5)
 
-# create routine for checking letters
-
+# funtion to check if letters are in right position and designate a color if they are or are not
 def check_words():
     global turn
     global board
@@ -57,8 +55,7 @@ def check_words():
                 pygame.draw.rect(screen, yellow, [col * 100 + 12, row * 100 + 12, 75, 75], 0, 5)
 
 
-# set up your main game loop
-
+#game loop
 running = True
 while running:
     timer.tick(fps)
@@ -69,7 +66,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-# add player controls for letter entry, backspacing, checking guesses and restarting
+# Checking for letter entry, backspacing, checking guesses and restarting
 
         if event.type == pygame.TEXTINPUT and turn_active and not game_over:
                 entry = event.__getattribute__('text')
